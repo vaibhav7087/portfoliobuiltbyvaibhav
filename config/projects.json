@@ -1,0 +1,110 @@
+{
+  "projects": [
+    {
+      "slug": "cureslot",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/bylance/cure_slot",
+      "repo": "vaibhav7087/cureslot",
+      "status": "featured",
+      "featuredRank": 1,
+      "liveUrl": null,
+      "stackOverride": ["Cloudflare Workers", "Queues", "D1", "WhatsApp Cloud API", "TypeScript"]
+    },
+    {
+      "slug": "curago",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/hackathon_projects/curago",
+      "repo": "vaibhav7087/curago",
+      "status": "featured",
+      "featuredRank": 2,
+      "liveUrl": null,
+      "stackOverride": ["FastAPI", "React", "Supabase", "Flutter", "Groq", "Vapi", "Twilio"]
+    },
+    {
+      "slug": "eldea-web",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/personal_projects/Eldeas-Web",
+      "repo": null,
+      "status": "deployed",
+      "liveUrl": "https://eldeasolutions.com",
+      "stackOverride": ["Next.js", "TypeScript", "Cloudflare Pages"]
+    },
+    {
+      "slug": "bylance-website",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/bylance/Bylance-Technologies-vr.1-",
+      "repo": null,
+      "status": "deployed",
+      "liveUrl": null,
+      "stackOverride": ["Next.js", "Tailwind CSS"]
+    },
+    {
+      "slug": "portfolio",
+      "localPath": null,
+      "repo": "vaibhav7087/portfolio",
+      "status": "deployed",
+      "liveUrl": "https://builtbyvaibhav.bylance.in",
+      "stackOverride": ["Next.js", "TypeScript", "GitHub Actions", "Cloudflare Pages"]
+    },
+    {
+      "slug": "college-gate-dashboard",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/college_projects/admin_website",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["React", "Firebase", "QR Generation"]
+    },
+    {
+      "slug": "dsa-grind-bot",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/academic_projects/discord_dsa",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["Python", "Discord API", "SQLite"]
+    },
+    {
+      "slug": "autopitch",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/personal_projects/hackathon_ppt_generator",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["Python"]
+    },
+    {
+      "slug": "freelanceflow",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/academic_projects/project_manager",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["FastAPI", "Supabase", "React"]
+    },
+    {
+      "slug": "voice-coach",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/personal_projects/learning_assistant",
+      "repo": null,
+      "status": "development",
+      "liveUrl": null,
+      "stackOverride": ["Python", "LLM APIs"]
+    },
+    {
+      "slug": "ai-research-chatbot",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/santham_sir_projects/AI-Research-Paper-Chatbot",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["Python", "LLM APIs"]
+    },
+    {
+      "slug": "indicprivacy-fl",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/santham_sir_projects/IndicPrivacy-FL",
+      "repo": "vaibhav7087/indic_privacyfl",
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["Python", "Federated Learning"]
+    },
+    {
+      "slug": "indic-doc-generation",
+      "localPath": "/mnt/c/Users/Vaibhav/projects/santham_sir_projects/indicdocgeneration",
+      "repo": null,
+      "status": "experiment",
+      "liveUrl": null,
+      "stackOverride": ["Python", "NLP"]
+    }
+  ]
+}

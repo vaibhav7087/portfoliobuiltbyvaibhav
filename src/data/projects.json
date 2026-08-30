@@ -1,0 +1,210 @@
+[
+  {
+    "slug": "cureslot",
+    "name": "Cureslot",
+    "tagline": "CureSlot is an automated, serverless WhatsApp bot built on Cloudflare Workers and D1, integrating with the Meta WhatsApp Cloud API. It is designed for medical c",
+    "description": "# CureSlot WhatsApp Bot\n\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.",
+    "status": "featured",
+    "featuredRank": 1,
+    "stack": [
+      "Cloudflare Workers",
+      "Queues",
+      "D1",
+      "WhatsApp Cloud API",
+      "TypeScript"
+    ],
+    "liveUrl": null,
+    "repoUrl": "https://github.com/vaibhav7087/cureslot",
+    "updatedAt": "2026-08-26T14:43:19.171Z"
+  },
+  {
+    "slug": "curago",
+    "name": "Curago",
+    "tagline": "flowchart LR",
+    "description": "#  Curago — Phygital Telemedicine & Rural Healthcare Logistics\n\n> **Curago** is an end-to-end \"Phygital\" (Physical + Digital) healthcare platform built to bring primary healthcare, intelligent voice triage, real-time doctor oversight, and last-mile medicine delivery to rural and underserved communities.\n\n---\n\n##  The 4-Phase Care Delivery Flow\n\n```mermaid\nflowchart LR\n    A[ 1. Voice Intake\\nPatient Calls In] --> B[ 2. AI Triage\\nGroq / NIM Extraction]\n    B --> C[‍️ 3. Doctor Dashboard\\nReview & Approve]\n    C --> D[ 4. Last-Mile Logistics\\nField Agent Delivery]\n    D --> E[ 5. Auto Follow-up",
+    "status": "featured",
+    "featuredRank": 2,
+    "stack": [
+      "FastAPI",
+      "React",
+      "Supabase",
+      "Flutter",
+      "Groq",
+      "Vapi",
+      "Twilio"
+    ],
+    "liveUrl": null,
+    "repoUrl": "https://github.com/vaibhav7087/curago",
+    "updatedAt": "2026-08-26T14:43:19.204Z"
+  },
+  {
+    "slug": "eldea-web",
+    "name": "Eldea Web",
+    "tagline": "## Running the code\r\n\r\n  Run `npm i` to install the dependencies.\r\n\r\n  Run `npm run dev` to start the development server.",
+    "description": "## Running the code\r\n\r\n  Run `npm i` to install the dependencies.\r\n\r\n  Run `npm run dev` to start the development server.",
+    "status": "deployed",
+    "featuredRank": null,
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Cloudflare Pages"
+    ],
+    "liveUrl": "https://eldeasolutions.com",
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.212Z"
+  },
+  {
+    "slug": "bylance-website",
+    "name": "Bylance Website",
+    "tagline": "Welcome to the repository for the first version of the Bylance Technologies official website. This platform serves as the primary digital storefront for our end",
+    "description": "# Bylance Technologies - Official Website (v1.0) \r\n\r\nWelcome to the repository for the first version of the **Bylance Technologies** official website. This platform serves as the primary digital storefront for our end-to-end software and infrastructure services.\r\n\r\n##  Overview\r\n\r\nBylance Technologies is a modern software solutions firm. We bridge the gap between aesthetic design and robust functionality, offering comprehensive services including:\r\n* Full-Stack Web & Mobile Application Development\r\n* Smart WhatsApp Automation Workflows\r\n* Secure Hosting & Domain Management\r\n* High-Fidelity UI/",
+    "status": "deployed",
+    "featuredRank": null,
+    "stack": [
+      "Next.js",
+      "Tailwind CSS"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.217Z"
+  },
+  {
+    "slug": "portfolio",
+    "name": "Portfolio",
+    "tagline": "Portfolio project",
+    "description": "",
+    "status": "deployed",
+    "featuredRank": null,
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "GitHub Actions",
+      "Cloudflare Pages"
+    ],
+    "liveUrl": "https://builtbyvaibhav.bylance.in",
+    "repoUrl": "https://github.com/vaibhav7087/portfolio",
+    "updatedAt": "2026-08-26T14:43:19.223Z"
+  },
+  {
+    "slug": "voice-coach",
+    "name": "Voice Coach",
+    "tagline": "Voice Coach project",
+    "description": "",
+    "status": "development",
+    "featuredRank": null,
+    "stack": [
+      "Python",
+      "LLM APIs"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.246Z"
+  },
+  {
+    "slug": "college-gate-dashboard",
+    "name": "College Gate Dashboard",
+    "tagline": "A web-based dashboard for receptionists to handle escalated visitor requests, issue QR passes, and view entry history.",
+    "description": "# College Gate Reception Dashboard\r\n\r\nA web-based dashboard for receptionists to handle escalated visitor requests, issue QR passes, and view entry history.\r\n\r\n## Features\r\n\r\n- **Live Queue Management**: Three-column dashboard showing pending, escalated, and approved requests\r\n- **Escalation Handling**: Automatic escalation of requests after 5 minutes of no faculty response\r\n- **Faculty Contact**: Direct call functionality to contact faculty members\r\n- **QR Pass Generation**: Generate and share QR codes via WhatsApp for approved visitors\r\n- **Entry History**: Filterable history of approved ent",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "React",
+      "Firebase",
+      "QR Generation"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.223Z"
+  },
+  {
+    "slug": "dsa-grind-bot",
+    "name": "Dsa Grind Bot",
+    "tagline": "A Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain",
+    "description": "#  DSA Grind Bot — Discord Edition\n\nA Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain streaks, and flex on your friends.\n\n---\n\n##  Features\n\n###  474-Problem Sheet (Striver's A2Z)\n- Full **Striver's A2Z DSA Sheet** with all 474 problems pre-loaded\n- **Easy (152)** · **Medium (186)** · **Hard (136)** across 19 topics\n- Browse interactively by **topic**, **difficulty**, or **unsolved only**\n- Every problem name is TUF + LeetCode compatible\n\n###  XP + Tier Gamification\n| Action | XP Earn",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Python",
+      "Discord API",
+      "SQLite"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.230Z"
+  },
+  {
+    "slug": "autopitch",
+    "name": "Autopitch",
+    "tagline": "Autopitch project",
+    "description": "",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Python"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.238Z"
+  },
+  {
+    "slug": "freelanceflow",
+    "name": "Freelanceflow",
+    "tagline": "A high-performance internal tool for solo freelance developers to manage clients, track tasks, and monitor payments with a premium dark glassmorphism interface.",
+    "description": "# FreelanceFlow — Project & Billing Tracker\n\n## Overview\nA high-performance internal tool for solo freelance developers to manage clients, track tasks, and monitor payments with a premium dark glassmorphism interface.\n\n##  Getting Started\nPlease refer to the [**START.md**](./START.md) file for detailed instructions on:\n1.  **Backend Setup** (FastAPI + Supabase)\n2.  **Frontend Setup** (React + Vite)\n3.  **Mandatory Testing Checklist** (Feature verification)\n\n## Tech Stack\n-   **Frontend**: React 18, Vite, CSS (Glassmorphism), React Router.\n-   **Backend**: FastAPI, Psycopg 3 (PostgreSQL), Pydan",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "FastAPI",
+      "Supabase",
+      "React"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.240Z"
+  },
+  {
+    "slug": "ai-research-chatbot",
+    "name": "Ai Research Chatbot",
+    "tagline": "## Running the code",
+    "description": "# AI Research Paper Chatbot\r\n\r\n  ## Running the code\r\n\r\n  Run `npm i` to install the dependencies.\r\n\r\n  Run `npm run dev` to start the development server.",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Python",
+      "LLM APIs"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.250Z"
+  },
+  {
+    "slug": "indicprivacy-fl",
+    "name": "Indicprivacy Fl",
+    "tagline": "A robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising ",
+    "description": "# IndicPrivacy-FL: Privacy-Aware Multimodal Federated Learning\n\nA robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising student data privacy.\n\n---\n\n##  Project Objectives\n\n1. **Data & Challenge Characterization:** Analyze multimodal Indic educational data (text, speech, image, video) and cross-lingual code-mixed language patterns.\n2. **Robust Multimodal Architecture:** Implement a multi-encoder network using state-of-the-art foundation models with a **Self-Attention Fusion mechanism** that d",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Python",
+      "Federated Learning"
+    ],
+    "liveUrl": null,
+    "repoUrl": "https://github.com/vaibhav7087/indic_privacyfl",
+    "updatedAt": "2026-08-26T14:43:19.254Z"
+  },
+  {
+    "slug": "indic-doc-generation",
+    "name": "Indic Doc Generation",
+    "tagline": "The objective of this project is to evaluate the effectiveness of Cross-Lingual Knowledge Transfer for core Natural Language Processing (NLP) tasks in low-resou",
+    "description": "# Indic Cross-Lingual Transfer Experiments\n\n## Objective\nThe objective of this project is to evaluate the effectiveness of **Cross-Lingual Knowledge Transfer** for core Natural Language Processing (NLP) tasks in low-resource Indo-Aryan languages (such as Bhojpuri, Maithili, Rajasthani, Dogri, and Chhattisgarhi). Since these languages lack large annotated datasets, we investigate how well grammatical, semantic, and structural knowledge from linguistically related high-resource languages (Hindi, Marathi, Bengali) transfers across scripts and typologies.\n\nWe systematically evaluate different stat",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Python",
+      "NLP"
+    ],
+    "liveUrl": null,
+    "repoUrl": null,
+    "updatedAt": "2026-08-26T14:43:19.259Z"
+  }
+]
