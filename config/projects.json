@@ -97,6 +97,7 @@
       "slug": "indicprivacy-fl",
       "localPath": "/mnt/c/Users/Vaibhav/projects/santham_sir_projects/IndicPrivacy-FL",
       "repo": "vaibhav7087/indic_privacyfl",
+      "nameOverride": "Indic PrivacyFL",
       "status": "experiment",
       "liveUrl": null,
       "stackOverride": ["Python", "Federated Learning"]
@@ -148,13 +149,6 @@
       "slug": "tripwire",
       "localPath": null,
       "repo": "vaibhav7087/tripwire",
-      "status": "experiment",
-      "liveUrl": null
-    },
-    {
-      "slug": "structured-learning-skill",
-      "localPath": null,
-      "repo": "vaibhav7087/structured_learning_skill",
       "status": "experiment",
       "liveUrl": null
     },

@@ -2,7 +2,7 @@
   {
     "slug": "cureslot",
     "name": "CureSlot",
-    "tagline": "Serverless WhatsApp appointment booking for clinics - Cloudflare Workers, D1, Queues",
+    "tagline": "CureSlot is an automated, serverless WhatsApp bot built on Cloudflare Workers and D1, integrating with the Meta WhatsApp Cloud API. It is designed for medical c",
     "description": "# CureSlot WhatsApp Bot\n\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.",
     "status": "featured",
     "featuredRank": 1,
@@ -87,7 +87,7 @@
     ],
     "liveUrl": "https://builtbyvaibhav.bylance.in",
     "repoUrl": "https://github.com/vaibhav7087/portfoliobuiltbyvaibhav",
-    "updatedAt": "2026-09-23T17:15:01Z",
+    "updatedAt": "2026-09-23T17:15:22Z",
     "hasDetailPage": false
   },
   {
@@ -190,7 +190,7 @@
   },
   {
     "slug": "indicprivacy-fl",
-    "name": "indic_privacyfl",
+    "name": "Indic PrivacyFL",
     "tagline": "A robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising ",
     "description": "# IndicPrivacy-FL: Privacy-Aware Multimodal Federated Learning\n\nA robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising student data privacy.\n\n---\n\n##  Project Objectives\n\n1. **Data & Challenge Characterization:** Analyze multimodal Indic educational data (text, speech, image, video) and cross-lingual code-mixed language patterns.\n2. **Robust Multimodal Architecture:** Implement a multi-encoder network using state-of-the-art foundation models with a **Self-Attention Fusion mechanism** that d",
     "status": "experiment",
@@ -222,7 +222,7 @@
   },
   {
     "slug": "ascend-bot",
-    "name": "ascend_bot",
+    "name": "Ascend Bot",
     "tagline": "A Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain",
     "description": "#  DSA Grind Bot — Discord Edition\n\nA Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain streaks, and flex on your friends.\n\n---\n\n##  Features\n\n###  474-Problem Sheet (Striver's A2Z)\n- Full **Striver's A2Z DSA Sheet** with all 474 problems pre-loaded\n- **Easy (152)** · **Medium (186)** · **Hard (136)** across 19 topics\n- Browse interactively by **topic**, **difficulty**, or **unsolved only**\n- Every problem name is TUF + LeetCode compatible\n\n###  XP + Tier Gamification\n| Action | XP Earn",
     "status": "experiment",
@@ -238,7 +238,7 @@
   },
   {
     "slug": "block-rev-image",
-    "name": "block_rev_image",
+    "name": "Block Rev Image",
     "tagline": "Given a photo containing a face, this system:",
     "description": "# Reverse Face Image Provenance on Blockchain\n\n> Verify where a face photo appears online, then stamp the evidence immutably on Polygon Amoy.\n\n---\n\n## What It Does\n\nGiven a photo containing a face, this system:\n\n1. **Detects the face** and generates a 512-dimensional ArcFace embedding\n2. **Searches the web** using reverse image search (Google Lens via SerpApi)\n3. **Verifies candidates** by comparing image similarity (pHash) and face similarity (ArcFace cosine)\n4. **Records evidence** on Polygon Amoy testnet — a SHA-256 hash of all findings stored in a smart contract\n5. **Produces a transaction",
     "status": "experiment",
@@ -253,7 +253,7 @@
   },
   {
     "slug": "gesture-detection",
-    "name": "gesture_detection",
+    "name": "Gesture Detection",
     "tagline": "Gesture Detection project",
     "description": "",
     "status": "experiment",
@@ -266,7 +266,7 @@
   },
   {
     "slug": "indiclangtransfer",
-    "name": "indiclangtransfer",
+    "name": "Indiclangtransfer",
     "tagline": "The objective of this project is to evaluate the effectiveness of Cross-Lingual Knowledge Transfer for core Natural Language Processing (NLP) tasks in low-resou",
     "description": "# Indic Cross-Lingual Transfer Experiments\n\n## Objective\nThe objective of this project is to evaluate the effectiveness of **Cross-Lingual Knowledge Transfer** for core Natural Language Processing (NLP) tasks in low-resource Indo-Aryan languages (such as Bhojpuri, Maithili, Rajasthani, Dogri, and Chhattisgarhi). Since these languages lack large annotated datasets, we investigate how well grammatical, semantic, and structural knowledge from linguistically related high-resource languages (Hindi, Marathi, Bengali) transfers across scripts and typologies.\n\nWe systematically evaluate different stat",
     "status": "experiment",
@@ -281,7 +281,7 @@
   },
   {
     "slug": "sih-brainstorming",
-    "name": "sih_brainstorming",
+    "name": "Sih Brainstorming",
     "tagline": "Sih Brainstorming project",
     "description": "",
     "status": "experiment",
@@ -294,7 +294,7 @@
   },
   {
     "slug": "tripwire",
-    "name": "tripwire",
+    "name": "Tripwire",
     "tagline": "This is a Next.js template with shadcn/ui.",
     "description": "# Next.js template\n\nThis is a Next.js template with shadcn/ui.\n\n## Adding components\n\nTo add components to your app, run the following command:\n\n```bash\nnpx shadcn@latest add button\n```\n\nThis will place the ui components in the `components` directory.\n\n## Using components\n\nTo use the components in your app, import them as follows:\n\n```tsx\nimport { Button } from \"@/components/ui/button\";\n```",
     "status": "experiment",
@@ -308,24 +308,8 @@
     "hasDetailPage": false
   },
   {
-    "slug": "structured-learning-skill",
-    "name": "structured_learning_skill",
-    "tagline": "this is antigravity skill to learn new software skills ",
-    "description": "#  Gamified Capstone Structured Learning Framework\n\n> An AI-powered, project-based learning engine for mastering any technology or framework by building a **resume-strong Capstone Project** through gamified **Micro-Tasks** and an interactive **9-Step Learning Cycle**.\n\n---\n\n---\n\n##  Overview\n\nThe **Structured Learning Framework** transforms passive reading into **deep, resume-building mastery**. Acting as a dedicated **AI Teacher-Agent & Game Master**, it helps you brainstorm or select a top-tier Capstone Project, maps out project milestones (Frontend, Backend, Operations), breaks topics into ",
-    "status": "experiment",
-    "featuredRank": null,
-    "stack": [
-      "Next.js",
-      "Docker"
-    ],
-    "liveUrl": null,
-    "repoUrl": "https://github.com/vaibhav7087/structured_learning_skill",
-    "updatedAt": "2026-07-27T16:47:23Z",
-    "hasDetailPage": false
-  },
-  {
     "slug": "tutorials",
-    "name": "tutorials",
+    "name": "Tutorials",
     "tagline": "store the notes to revise here",
     "description": "",
     "status": "experiment",

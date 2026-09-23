@@ -85,6 +85,14 @@ function titleCase(s) {
   return s;
 }
 
+// Human-friendly display name from a GitHub repo name:
+// "structured_learning_skill" -> "Structured Learning Skill".
+function displayNameFromRepo(repoName, fallback) {
+  const words = String(repoName || "").split(/[-_]+/).filter(Boolean);
+  if (!words.length) return fallback;
+  return words.map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ");
+}
+
 function now() {
   return new Date().toISOString();
 }
@@ -259,7 +267,7 @@ async function main() {
     // 3. Build project entry
     const project = {
       slug,
-      name: entry.nameOverride || (ghData ? titleCase(ghData.name) : (prev.name || name)),
+      name: entry.nameOverride || (ghData ? displayNameFromRepo(ghData.name, prev.name || name) : (prev.name || name)),
       tagline,
       description,
       status: entry.status,
