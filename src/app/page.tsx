@@ -191,6 +191,14 @@ export default function Home() {
               <article className="exp-card" key={p.slug}>
                 <h4>{p.name}</h4>
                 <p>{p.tagline}</p>
+                <div className="exp-meta mono">
+                  <Updated iso={p.updatedAt} />
+                  {p.repoUrl && (
+                    <a href={p.repoUrl} className="link-ext" target="_blank" rel="noopener noreferrer">
+                      source
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>

@@ -108,6 +108,62 @@
       "status": "experiment",
       "liveUrl": null,
       "stackOverride": ["Python", "NLP"]
+    },
+    {
+      "slug": "ascend-bot",
+      "localPath": null,
+      "repo": "vaibhav7087/ascend_bot",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "block-rev-image",
+      "localPath": null,
+      "repo": "vaibhav7087/block_rev_image",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "gesture-detection",
+      "localPath": null,
+      "repo": "vaibhav7087/gesture_detection",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "indiclangtransfer",
+      "localPath": null,
+      "repo": "vaibhav7087/indiclangtransfer",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "sih-brainstorming",
+      "localPath": null,
+      "repo": "vaibhav7087/sih_brainstorming",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "tripwire",
+      "localPath": null,
+      "repo": "vaibhav7087/tripwire",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "structured-learning-skill",
+      "localPath": null,
+      "repo": "vaibhav7087/structured_learning_skill",
+      "status": "experiment",
+      "liveUrl": null
+    },
+    {
+      "slug": "tutorials",
+      "localPath": null,
+      "repo": "vaibhav7087/tutorials",
+      "status": "experiment",
+      "liveUrl": null
     }
   ]
 }

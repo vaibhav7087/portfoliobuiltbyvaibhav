@@ -651,6 +651,14 @@ p {
   color: var(--muted);
 }
 
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
 .badges {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
