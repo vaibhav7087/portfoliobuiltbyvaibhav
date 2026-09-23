@@ -6,7 +6,9 @@ import { marked } from "marked";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, "config/projects.json"), "utf8"));
 const GITHUB_API = "https://api.github.com";
-const TOKEN = process.env.GITHUB_TOKEN;
+// SYNC_TOKEN is a fine-grained PAT (needed for private repos); falls back to the
+// automatic GITHUB_TOKEN which covers public repos in CI.
+const TOKEN = process.env.SYNC_TOKEN || process.env.GITHUB_TOKEN;
 const SYNC_MODE = process.argv.includes("--sync");
 
 function ghHeaders() {
@@ -17,6 +19,14 @@ function ghHeaders() {
   };
   if (TOKEN) h.Authorization = `Bearer ${TOKEN}`;
   return h;
+}
+
+function loadJsonSafe(p, fallback) {
+  try {
+    return JSON.parse(fs.readFileSync(p, "utf8"));
+  } catch {
+    return fallback;
+  }
 }
 
 function cleanMarkdown(raw) {
@@ -79,31 +89,57 @@ function now() {
   return new Date().toISOString();
 }
 
+// Raw README markdown from GitHub (follows the repo default branch).
+// Works unauthenticated for public repos; private repos need SYNC_TOKEN.
+async function fetchReadmeRaw(repo) {
+  const res = await fetch(`${GITHUB_API}/repos/${repo}/readme`, {
+    headers: { ...ghHeaders(), Accept: "application/vnd.github.raw" },
+  });
+  if (!res.ok) {
+    console.log(`  ${repo}: no GitHub README (${res.status})`);
+    return null;
+  }
+  const text = (await res.text()).trim();
+  if (!text) {
+    console.log(`  ${repo}: GitHub README empty`);
+    return null;
+  }
+  console.log(`  ${repo}: GitHub README (${text.length} chars)`);
+  return text;
+}
+
 async function main() {
+  // Previously synced snapshot: never throw away good data we already have.
+  // Non-sync builds (local dev, Pages) only fill gaps; they never overwrite
+  // real taglines/descriptions/timestamps with placeholders.
+  const prevProjects = loadJsonSafe(path.join(ROOT, "src/data/projects.json"), []);
+  const prevBySlug = Object.fromEntries(prevProjects.map((p) => [p.slug, p]));
+  const prevReadmes = loadJsonSafe(path.join(ROOT, "src/data/project-readmes.json"), {});
+
   const projects = [];
   const readmes = {};
 
   for (const entry of CONFIG.projects) {
     const slug = entry.slug;
+    const prev = prevBySlug[slug] || {};
     const name = prettifyName(slug);
     let readmeRaw = null;
     let ghData = null;
-    let tagline = "";
-    let description = "";
-    let stack = entry.stackOverride || [];
-    let updatedAt = now();
-    let repoUrl = entry.repo ? `https://github.com/${entry.repo}` : null;
+    let tagline = entry.taglineOverride || "";
+    let description = entry.descriptionOverride || "";
+    let stack = Array.isArray(entry.stackOverride) && entry.stackOverride.length
+      ? [...entry.stackOverride]
+      : [];
+    // Keep last known values unless we fetch something better.
+    let updatedAt = prev.updatedAt || null;
+    let repoUrl = prev.repoUrl || null;
 
     // 1. Read local README if available
     if (entry.localPath) {
       const readmePath = path.join(entry.localPath, "README.md");
       try {
         readmeRaw = fs.readFileSync(readmePath, "utf8");
-        const cleaned = cleanMarkdown(readmeRaw);
-        tagline = extractTagline(cleaned);
-        description = cleaned.slice(0, 600);
-        if (!stack.length) stack = extractStackFromReadme(cleaned);
-        console.log(`  ${slug}: local README (${cleaned.length} chars)`);
+        console.log(`  ${slug}: local README (${readmeRaw.length} chars)`);
       } catch {
         console.log(`  ${slug}: no README at ${readmePath}`);
       }
@@ -115,40 +151,63 @@ async function main() {
         const res = await fetch(`${GITHUB_API}/repos/${entry.repo}`, { headers: ghHeaders() });
         if (res.ok) {
           ghData = await res.json();
-          updatedAt = ghData.pushed_at;
-          repoUrl = ghData.html_url;
+          updatedAt = ghData.pushed_at || updatedAt;
+          repoUrl = ghData.html_url || repoUrl;
           if (!tagline) tagline = (ghData.description || "").slice(0, 160);
           console.log(`  ${slug}: GitHub sync OK (${ghData.pushed_at})`);
         } else {
-          console.log(`  ${slug}: GitHub ${res.status}, using local data`);
+          console.log(`  ${slug}: GitHub ${res.status}, keeping previous data`);
         }
       } catch (e) {
-        console.log(`  ${slug}: GitHub fetch failed (${e.message})`);
+        console.log(`  ${slug}: GitHub fetch failed (${e.message}), keeping previous data`);
       }
-    } else if (entry.repo) {
-      // Non-sync mode: try to get pushed_at from existing data
-      console.log(`  ${slug}: non-sync mode, keeping existing timestamps`);
+      if (!readmeRaw) {
+        try {
+          readmeRaw = await fetchReadmeRaw(entry.repo);
+        } catch (e) {
+          console.log(`  ${slug}: GitHub README fetch failed (${e.message})`);
+        }
+      }
+    } else if (entry.repo && !SYNC_MODE) {
+      if (!repoUrl) repoUrl = `https://github.com/${entry.repo}`;
+      console.log(`  ${slug}: non-sync mode, keeping previous data`);
+    } else if (!entry.repo && !repoUrl) {
+      repoUrl = null;
     }
+
+    // 3. Derive display fields, preferring freshly fetched content.
+    const cleaned = readmeRaw ? cleanMarkdown(readmeRaw) : "";
+    if (!tagline) tagline = extractTagline(cleaned);
+    if (!tagline) tagline = prev.tagline || `${name} project`;
+    if (!description) description = cleaned ? cleaned.slice(0, 600) : (prev.description || "");
+    if (!stack.length) stack = extractStackFromReadme(cleaned);
+    if (!stack.length) stack = prev.stack || [];
+    if (!updatedAt) updatedAt = now();
+
+    // Private repos (orHidden code links): card shows, Source link hidden.
+    if (entry.showCodeLink === false) repoUrl = null;
 
     // 3. Build project entry
     const project = {
       slug,
-      name: ghData ? titleCase(ghData.name) : name,
-      tagline: tagline || description.slice(0, 160) || `${name} project`,
-      description: description || tagline || "",
+      name: entry.nameOverride || (ghData ? titleCase(ghData.name) : (prev.name || name)),
+      tagline,
+      description,
       status: entry.status,
       featuredRank: entry.featuredRank ?? null,
       stack,
-      liveUrl: entry.liveUrl,
+      liveUrl: entry.liveUrl ?? prev.liveUrl ?? null,
       repoUrl,
       updatedAt,
+      hasDetailPage: entry.status === "featured",
     };
     projects.push(project);
 
-    // 4. Build readme HTML
+    // 4. Build readme HTML (keep previous snapshot when nothing new found)
     if (readmeRaw) {
-      const cleaned = cleanMarkdown(readmeRaw);
       readmes[slug] = { html: marked.parse(cleaned), description: description.slice(0, 400) };
+    } else if (prevReadmes[slug]) {
+      readmes[slug] = prevReadmes[slug];
     } else {
       readmes[slug] = null;
     }
@@ -170,7 +229,7 @@ async function main() {
   console.log(`\nBuilt ${projects.length} projects:`);
   for (const p of projects) {
     const r = readmes[p.slug] ? "README" : "no readme";
-    console.log(`  ${p.status.padEnd(12)} ${p.name.padEnd(28)} ${r}`);
+    console.log(`  ${p.status.padEnd(12)} ${p.name.padEnd(28)} ${r} ${p.updatedAt.slice(0, 10)}`);
   }
 }
 

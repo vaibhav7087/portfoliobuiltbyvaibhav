@@ -1,9 +1,9 @@
 [
   {
     "slug": "cureslot",
-    "name": "Cureslot",
-    "tagline": "Cureslot project",
-    "description": "",
+    "name": "CureSlot",
+    "tagline": "CureSlot is an automated, serverless WhatsApp bot built on Cloudflare Workers and D1, integrating with the Meta WhatsApp Cloud API. It is designed for medical c",
+    "description": "# CureSlot WhatsApp Bot\n\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.",
     "status": "featured",
     "featuredRank": 1,
     "stack": [
@@ -14,14 +14,15 @@
       "TypeScript"
     ],
     "liveUrl": null,
-    "repoUrl": "https://github.com/vaibhav7087/cureslot",
-    "updatedAt": "2026-09-22T19:01:30.491Z"
+    "repoUrl": null,
+    "updatedAt": "2026-09-23T16:37:56Z",
+    "hasDetailPage": true
   },
   {
     "slug": "curago",
     "name": "Curago",
     "tagline": "a voice agent to help rural areas have telemedicine services with multilingual support",
-    "description": "a voice agent to help rural areas have telemedicine services with multilingual support",
+    "description": "#  Curago — Phygital Telemedicine & Rural Healthcare Logistics\n\n> **Curago** is an end-to-end \"Phygital\" (Physical + Digital) healthcare platform built to bring primary healthcare, intelligent voice triage, real-time doctor oversight, and last-mile medicine delivery to rural and underserved communities.\n\n---\n\n##  The 4-Phase Care Delivery Flow\n\n```mermaid\nflowchart LR\n    A[ 1. Voice Intake\\nPatient Calls In] --> B[ 2. AI Triage\\nGroq / NIM Extraction]\n    B --> C[‍️ 3. Doctor Dashboard\\nReview & Approve]\n    C --> D[ 4. Last-Mile Logistics\\nField Agent Delivery]\n    D --> E[ 5. Auto Follow-up",
     "status": "featured",
     "featuredRank": 2,
     "stack": [
@@ -35,7 +36,8 @@
     ],
     "liveUrl": null,
     "repoUrl": "https://github.com/vaibhav7087/CURAGO",
-    "updatedAt": "2026-08-19T09:08:40Z"
+    "updatedAt": "2026-08-19T09:08:40Z",
+    "hasDetailPage": true
   },
   {
     "slug": "eldea-web",
@@ -51,7 +53,8 @@
     ],
     "liveUrl": "https://eldeasolutions.com",
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.241Z"
+    "updatedAt": "2026-09-22T19:01:31.241Z",
+    "hasDetailPage": false
   },
   {
     "slug": "bylance-website",
@@ -66,13 +69,14 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.241Z"
+    "updatedAt": "2026-09-22T19:01:31.241Z",
+    "hasDetailPage": false
   },
   {
     "slug": "portfolio",
     "name": "Portfolio",
-    "tagline": "Portfolio project",
-    "description": "",
+    "tagline": "CLI-themed static portfolio. Next.js (App Router) static export, deployed on Cloudflare Pages.",
+    "description": "# Portfolio — builtbyvaibhav.bylance.in\n\nCLI-themed static portfolio. Next.js (App Router) static export, deployed on Cloudflare Pages.\nAll project data is driven by a single config file — no hardcoded project entries.\n\n## Architecture\n```\nconfig/projects.json          <- THE source of truth (status, paths, repo URLs)\n        |\n        v\nscripts/build-projects.mjs    <- reads config + local READMEs + GitHub API\n        |\n        v\nsrc/data/projects.json        <- generated: project metadata\nsrc/data/project-readmes.json <- generated: rendered README HTML\n        |\n        v\nnext build         ",
     "status": "deployed",
     "featuredRank": null,
     "stack": [
@@ -82,8 +86,9 @@
       "Cloudflare Pages"
     ],
     "liveUrl": "https://builtbyvaibhav.bylance.in",
-    "repoUrl": "https://github.com/vaibhav7087/portfolio",
-    "updatedAt": "2026-09-22T19:01:31.241Z"
+    "repoUrl": "https://github.com/vaibhav7087/portfoliobuiltbyvaibhav",
+    "updatedAt": "2026-09-23T16:23:34Z",
+    "hasDetailPage": false
   },
   {
     "slug": "voice-coach",
@@ -98,7 +103,8 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "college-gate-dashboard",
@@ -114,7 +120,8 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "dsa-grind-bot",
@@ -130,7 +137,8 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "autopitch",
@@ -144,7 +152,8 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "freelanceflow",
@@ -160,7 +169,8 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "ai-research-chatbot",
@@ -175,13 +185,14 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.417Z"
+    "updatedAt": "2026-09-22T19:01:31.417Z",
+    "hasDetailPage": false
   },
   {
     "slug": "indicprivacy-fl",
     "name": "indic_privacyfl",
-    "tagline": "Indicprivacy Fl project",
-    "description": "",
+    "tagline": "A robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising ",
+    "description": "# IndicPrivacy-FL: Privacy-Aware Multimodal Federated Learning\n\nA robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising student data privacy.\n\n---\n\n##  Project Objectives\n\n1. **Data & Challenge Characterization:** Analyze multimodal Indic educational data (text, speech, image, video) and cross-lingual code-mixed language patterns.\n2. **Robust Multimodal Architecture:** Implement a multi-encoder network using state-of-the-art foundation models with a **Self-Attention Fusion mechanism** that d",
     "status": "experiment",
     "featuredRank": null,
     "stack": [
@@ -190,7 +201,8 @@
     ],
     "liveUrl": null,
     "repoUrl": "https://github.com/vaibhav7087/indic_privacyfl",
-    "updatedAt": "2026-08-12T23:15:59Z"
+    "updatedAt": "2026-08-12T23:15:59Z",
+    "hasDetailPage": false
   },
   {
     "slug": "indic-doc-generation",
@@ -205,6 +217,7 @@
     ],
     "liveUrl": null,
     "repoUrl": null,
-    "updatedAt": "2026-09-22T19:01:31.769Z"
+    "updatedAt": "2026-09-22T19:01:31.769Z",
+    "hasDetailPage": false
   }
 ]

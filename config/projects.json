@@ -2,11 +2,13 @@
   "projects": [
     {
       "slug": "cureslot",
-      "localPath": "/mnt/c/Users/Vaibhav/projects/bylance/cure_slot",
+      "localPath": "C:\\Users\\Vaibhav\\projects\\bylance\\cure_slot",
       "repo": "vaibhav7087/cureslot",
+      "nameOverride": "CureSlot",
       "status": "featured",
       "featuredRank": 1,
       "liveUrl": null,
+      "showCodeLink": false,
       "stackOverride": ["Cloudflare Workers", "Queues", "D1", "WhatsApp Cloud API", "TypeScript"]
     },
     {
@@ -37,7 +39,8 @@
     {
       "slug": "portfolio",
       "localPath": null,
-      "repo": "vaibhav7087/portfolio",
+      "repo": "vaibhav7087/portfoliobuiltbyvaibhav",
+      "nameOverride": "Portfolio",
       "status": "deployed",
       "liveUrl": "https://builtbyvaibhav.bylance.in",
       "stackOverride": ["Next.js", "TypeScript", "GitHub Actions", "Cloudflare Pages"]

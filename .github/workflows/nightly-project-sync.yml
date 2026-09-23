@@ -25,6 +25,9 @@ jobs:
       - name: Build project data from config + GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Fine-grained PAT with contents:read on private repos (e.g. cureslot).
+          # Falls back to GITHUB_TOKEN (public repos only) when unset.
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: |
           npm install
           node scripts/build-projects.mjs --sync
