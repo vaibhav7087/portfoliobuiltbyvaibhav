@@ -178,8 +178,7 @@ async function main() {
   const readmes = {};
 
   // Merge manual config with auto-discovered tagged repos (sync mode only).
-  // Manual slugs win; stale auto entries vanish automatically because only
-  // current entries are emitted below.
+  // Manual slugs win; untagged auto entries vanish on the next sync.
   let allEntries = [...CONFIG.projects];
   if (SYNC_MODE) {
     const manualRepos = CONFIG.projects.map((e) => e.repo).filter(Boolean);
@@ -191,6 +190,18 @@ async function main() {
       }
       usedSlugs.add(a.slug);
       allEntries.push(a);
+    }
+  } else {
+    // Non-sync builds (local dev, Pages deploys) can't discover, so carry
+    // forward previously synced auto cards instead of dropping them.
+    const covered = new Set(allEntries.map((e) => e.slug));
+    for (const p of prevProjects) {
+      if (p.auto && !covered.has(p.slug)) {
+        covered.add(p.slug);
+        projects.push(p);
+        if (prevReadmes[p.slug]) readmes[p.slug] = prevReadmes[p.slug];
+        console.log(`  ${p.slug}: carried forward (auto, from previous sync)`);
+      }
     }
   }
 
