@@ -123,44 +123,59 @@ const AUTO_TOPIC = "portfolio";
 const AUTO_EXCLUDE = ["vaibhav7087", "portfoliobuiltbyvaibhav"];
 
 async function discoverTaggedRepos(manualRepos) {
-  if (!TOKEN) {
-    console.log("auto-discover: no token, skipping (public fallback unavailable for /user/repos)");
-    return [];
+  // Owner for the public-repo fallback, derived from manual entries.
+  const ownerCounts = {};
+  for (const r of manualRepos) {
+    const owner = String(r).split("/")[0];
+    if (owner) ownerCounts[owner] = (ownerCounts[owner] || 0) + 1;
   }
+  const owner = Object.entries(ownerCounts).sort((a, b) => b[1] - a[1])[0]?.[0];
   const covered = new Set(
     [...manualRepos, ...AUTO_EXCLUDE].map((r) => String(r).toLowerCase())
   );
+  // Union of authenticated listing (sees private repos the token can access)
+  // and the public listing (covers everything public even when the token is
+  // scoped to a subset, e.g. a fine-grained PAT for one private repo).
+  // Public source needs no token at all.
+  const seen = new Map(); // lowerFullName -> repo
+  const sources = [];
+  if (TOKEN) sources.push(`${GITHUB_API}/user/repos?per_page=100&affiliation=owner`);
+  if (owner) sources.push(`${GITHUB_API}/users/${owner}/repos?per_page=100`);
+  if (!sources.length) {
+    console.log("auto-discover: no token and no owner, skipping");
+    return [];
+  }
+  for (const base of sources) {
+    let page = 1;
+    for (;;) {
+      const res = await fetch(`${base}&page=${page}`.replace("?&", "?"), { headers: ghHeaders() });
+      if (!res.ok) {
+        console.log(`auto-discover: ${base.split("?")[0]} -> GitHub ${res.status}, skipping source`);
+        break;
+      }
+      const repos = await res.json();
+      if (!repos.length) break;
+      for (const r of repos) seen.set(String(r.full_name).toLowerCase(), r);
+      if (repos.length < 100) break;
+      page += 1;
+    }
+  }
   const found = [];
-  let page = 1;
-  for (;;) {
-    const res = await fetch(
-      `${GITHUB_API}/user/repos?per_page=100&page=${page}&affiliation=owner`,
-      { headers: ghHeaders() }
-    );
-    if (!res.ok) {
-      console.log(`auto-discover: GitHub ${res.status}, skipping`);
-      return [];
-    }
-    const repos = await res.json();
-    if (!repos.length) break;
-    for (const r of repos) {
-      if (r.fork || r.archived) continue;
-      if (covered.has(String(r.full_name).toLowerCase())) continue;
-      if (!(r.topics || []).includes(AUTO_TOPIC)) continue;
-      found.push({
-        slug: String(r.name).toLowerCase().replace(/_/g, "-").replace(/[^a-z0-9-]/g, ""),
-        repo: r.full_name,
-        status: "experiment",
-        featuredRank: null,
-        liveUrl: null,
-        auto: true,
-        // Private auto repos: listed, but Source link hidden like cureslot.
-        showCodeLink: r.private ? false : undefined,
-      });
-      covered.add(String(r.full_name).toLowerCase());
-    }
-    if (repos.length < 100) break;
-    page += 1;
+  for (const r of seen.values()) {
+    if (r.fork || r.archived) continue;
+    if (covered.has(String(r.full_name).toLowerCase())) continue;
+    if (!(r.topics || []).includes(AUTO_TOPIC)) continue;
+    found.push({
+      slug: String(r.name).toLowerCase().replace(/_/g, "-").replace(/[^a-z0-9-]/g, ""),
+      repo: r.full_name,
+      status: "experiment",
+      featuredRank: null,
+      liveUrl: null,
+      auto: true,
+      // Private auto repos: listed, but Source link hidden like cureslot.
+      showCodeLink: r.private ? false : undefined,
+    });
+    covered.add(String(r.full_name).toLowerCase());
   }
   console.log(`auto-discover: ${found.length} tagged repo(s)`);
   return found;
