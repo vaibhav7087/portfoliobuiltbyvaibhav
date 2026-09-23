@@ -87,7 +87,7 @@
     ],
     "liveUrl": "https://builtbyvaibhav.bylance.in",
     "repoUrl": "https://github.com/vaibhav7087/portfoliobuiltbyvaibhav",
-    "updatedAt": "2026-09-23T17:52:02Z",
+    "updatedAt": "2026-09-23T17:56:13Z",
     "hasDetailPage": false
   },
   {
@@ -105,23 +105,6 @@
     "repoUrl": null,
     "updatedAt": null,
     "hasDetailPage": false
-  },
-  {
-    "slug": "structured-learning-skill",
-    "name": "Structured Learning Skill",
-    "tagline": "this is antigravity skill to learn new software skills ",
-    "description": "#  Gamified Capstone Structured Learning Framework\n\n> An AI-powered, project-based learning engine for mastering any technology or framework by building a **resume-strong Capstone Project** through gamified **Micro-Tasks** and an interactive **9-Step Learning Cycle**.\n\n---\n\n---\n\n##  Overview\n\nThe **Structured Learning Framework** transforms passive reading into **deep, resume-building mastery**. Acting as a dedicated **AI Teacher-Agent & Game Master**, it helps you brainstorm or select a top-tier Capstone Project, maps out project milestones (Frontend, Backend, Operations), breaks topics into ",
-    "status": "experiment",
-    "featuredRank": null,
-    "stack": [
-      "Next.js",
-      "Docker"
-    ],
-    "liveUrl": null,
-    "repoUrl": "https://github.com/vaibhav7087/structured_learning_skill",
-    "updatedAt": "2026-07-27T16:47:23Z",
-    "hasDetailPage": false,
-    "auto": true
   },
   {
     "slug": "college-gate-dashboard",
