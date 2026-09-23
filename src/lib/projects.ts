@@ -13,7 +13,7 @@ export interface Project {
   stack: string[];
   liveUrl: string | null;
   repoUrl: string | null;
-  updatedAt: string;
+  updatedAt: string | null;
   hasDetailPage: boolean;
 }
 

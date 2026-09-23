@@ -131,7 +131,9 @@ async function main() {
       ? [...entry.stackOverride]
       : [];
     // Keep last known values unless we fetch something better.
-    let updatedAt = prev.updatedAt || null;
+    // Entries with no repo have no verifiable activity signal, so they get
+    // no timestamp at all (rather than a fake sync-date stamp).
+    let updatedAt = entry.repo ? (prev.updatedAt || null) : null;
     let repoUrl = prev.repoUrl || null;
 
     // 1. Read local README if available
@@ -182,7 +184,7 @@ async function main() {
     if (!description) description = cleaned ? cleaned.slice(0, 600) : (prev.description || "");
     if (!stack.length) stack = extractStackFromReadme(cleaned);
     if (!stack.length) stack = prev.stack || [];
-    if (!updatedAt) updatedAt = now();
+    if (!updatedAt && entry.repo) updatedAt = now();
 
     // Private repos (orHidden code links): card shows, Source link hidden.
     if (entry.showCodeLink === false) repoUrl = null;
@@ -229,7 +231,7 @@ async function main() {
   console.log(`\nBuilt ${projects.length} projects:`);
   for (const p of projects) {
     const r = readmes[p.slug] ? "README" : "no readme";
-    console.log(`  ${p.status.padEnd(12)} ${p.name.padEnd(28)} ${r} ${p.updatedAt.slice(0, 10)}`);
+    console.log(`  ${p.status.padEnd(12)} ${p.name.padEnd(28)} ${r} ${(p.updatedAt || "no-date").slice(0, 10)}`);
   }
 }
 
