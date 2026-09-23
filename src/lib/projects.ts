@@ -15,6 +15,7 @@ export interface Project {
   repoUrl: string | null;
   updatedAt: string | null;
   hasDetailPage: boolean;
+  auto?: boolean;
 }
 
 export const projects: Project[] = projectsData as Project[];

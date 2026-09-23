@@ -91,8 +91,7 @@ function now() {
 
 // Raw README markdown from GitHub (follows the repo default branch).
 // Works unauthenticated for public repos; private repos need SYNC_TOKEN.
-async function fetchReadmeRaw(repo) {
-  const res = await fetch(`${GITHUB_API}/repos/${repo}/readme`, {
+async function fetchReadmeRaw(repo) {  const res = await fetch(`${GITHUB_API}/repos/${repo}/readme`, {
     headers: { ...ghHeaders(), Accept: "application/vnd.github.raw" },
   });
   if (!res.ok) {
@@ -108,6 +107,57 @@ async function fetchReadmeRaw(repo) {
   return text;
 }
 
+// Topic-based auto-discovery (spec v2): any repo you tag with `portfolio`
+// on GitHub is picked up as an experiment card on the next sync — no config
+// edit needed. Manual config entries always win on conflicts.
+const AUTO_TOPIC = "portfolio";
+// Never auto-listed: profile README repo + repos already curated manually.
+const AUTO_EXCLUDE = ["vaibhav7087", "portfoliobuiltbyvaibhav"];
+
+async function discoverTaggedRepos(manualRepos) {
+  if (!TOKEN) {
+    console.log("auto-discover: no token, skipping (public fallback unavailable for /user/repos)");
+    return [];
+  }
+  const covered = new Set(
+    [...manualRepos, ...AUTO_EXCLUDE].map((r) => String(r).toLowerCase())
+  );
+  const found = [];
+  let page = 1;
+  for (;;) {
+    const res = await fetch(
+      `${GITHUB_API}/user/repos?per_page=100&page=${page}&affiliation=owner`,
+      { headers: ghHeaders() }
+    );
+    if (!res.ok) {
+      console.log(`auto-discover: GitHub ${res.status}, skipping`);
+      return [];
+    }
+    const repos = await res.json();
+    if (!repos.length) break;
+    for (const r of repos) {
+      if (r.fork || r.archived) continue;
+      if (covered.has(String(r.full_name).toLowerCase())) continue;
+      if (!(r.topics || []).includes(AUTO_TOPIC)) continue;
+      found.push({
+        slug: String(r.name).toLowerCase().replace(/_/g, "-").replace(/[^a-z0-9-]/g, ""),
+        repo: r.full_name,
+        status: "experiment",
+        featuredRank: null,
+        liveUrl: null,
+        auto: true,
+        // Private auto repos: listed, but Source link hidden like cureslot.
+        showCodeLink: r.private ? false : undefined,
+      });
+      covered.add(String(r.full_name).toLowerCase());
+    }
+    if (repos.length < 100) break;
+    page += 1;
+  }
+  console.log(`auto-discover: ${found.length} tagged repo(s)`);
+  return found;
+}
+
 async function main() {
   // Previously synced snapshot: never throw away good data we already have.
   // Non-sync builds (local dev, Pages) only fill gaps; they never overwrite
@@ -119,7 +169,24 @@ async function main() {
   const projects = [];
   const readmes = {};
 
-  for (const entry of CONFIG.projects) {
+  // Merge manual config with auto-discovered tagged repos (sync mode only).
+  // Manual slugs win; stale auto entries vanish automatically because only
+  // current entries are emitted below.
+  let allEntries = [...CONFIG.projects];
+  if (SYNC_MODE) {
+    const manualRepos = CONFIG.projects.map((e) => e.repo).filter(Boolean);
+    const usedSlugs = new Set(CONFIG.projects.map((e) => e.slug));
+    for (const a of await discoverTaggedRepos(manualRepos)) {
+      if (!a.slug || usedSlugs.has(a.slug)) {
+        console.log(`auto-discover: slug '${a.slug}' taken, skipping`);
+        continue;
+      }
+      usedSlugs.add(a.slug);
+      allEntries.push(a);
+    }
+  }
+
+  for (const entry of allEntries) {
     const slug = entry.slug;
     const prev = prevBySlug[slug] || {};
     const name = prettifyName(slug);
@@ -202,6 +269,7 @@ async function main() {
       repoUrl,
       updatedAt,
       hasDetailPage: entry.status === "featured",
+      ...(entry.auto === true ? { auto: true } : {}),
     };
     projects.push(project);
 
