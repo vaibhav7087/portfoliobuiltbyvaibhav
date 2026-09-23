@@ -36,21 +36,24 @@ jobs:
         run: |
           git config user.name "nightly-sync-bot"
           git config user.email "actions@users.noreply.github.com"
-          # Retry loop: regenerating + rebasing survives concurrent pushes
-          # (e.g. a deploy commit landing mid-run) instead of failing.
+          # Sync output is fully regenerable from config + GitHub, so on any
+          # race we reset to origin and regenerate instead of rebasing: this
+          # can never conflict and never loses data.
           n=0
           until [ $n -ge 3 ]; do
             n=$((n+1))
+            git fetch origin main
+            git reset --hard origin/main
             node scripts/build-projects.mjs --sync
             git add src/data/projects.json src/data/project-readmes.json
-            git diff --cached --quiet || git commit -m "chore(data): nightly project sync $(date -u +%F)"
-            if git pull --rebase origin main; then
-              if git push; then
-                echo "Sync pushed."
-                exit 0
-              fi
-            else
-              git rebase --abort || true
+            if git diff --cached --quiet; then
+              echo "No changes since last sync."
+              exit 0
+            fi
+            git commit -m "chore(data): nightly project sync $(date -u +%F)"
+            if git push; then
+              echo "Sync pushed."
+              exit 0
             fi
             sleep 10
           done
