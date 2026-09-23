@@ -2,7 +2,7 @@
   {
     "slug": "cureslot",
     "name": "CureSlot",
-    "tagline": "CureSlot is an automated, serverless WhatsApp bot built on Cloudflare Workers and D1, integrating with the Meta WhatsApp Cloud API. It is designed for medical c",
+    "tagline": "Serverless WhatsApp appointment booking for clinics - Cloudflare Workers, D1, Queues",
     "description": "# CureSlot WhatsApp Bot\n\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.",
     "status": "featured",
     "featuredRank": 1,
@@ -87,7 +87,7 @@
     ],
     "liveUrl": "https://builtbyvaibhav.bylance.in",
     "repoUrl": "https://github.com/vaibhav7087/portfoliobuiltbyvaibhav",
-    "updatedAt": "2026-09-23T16:23:34Z",
+    "updatedAt": "2026-09-23T16:44:11Z",
     "hasDetailPage": false
   },
   {
