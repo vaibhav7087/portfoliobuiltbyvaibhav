@@ -15,6 +15,10 @@ import {
   featuredProjects,
 } from "@/lib/projects";
 
+type ReadmeEntry = { html: string; description?: string } | null;
+const readmeMap = readmes as Record<string, ReadmeEntry>;
+const hasReadme = (slug: string) => !!readmeMap[slug]?.html;
+
 export default function Home() {
   return (
     <>
@@ -114,7 +118,7 @@ export default function Home() {
                 <Updated iso={p.updatedAt} />
               </div>
               <h3 className="proj-title">
-                {readmes[p.slug as keyof typeof readmes] ? (
+                {hasReadme(p.slug) ? (
                   <Link href={`/projects/${p.slug}`} className="proj-title-link">
                     {p.name}
                   </Link>
@@ -131,7 +135,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="proj-links">
-                {readmes[p.slug as keyof typeof readmes] && (
+                {hasReadme(p.slug) && (
                   <Link href={`/projects/${p.slug}`} className="link-arrow">
                     View Details
                   </Link>
@@ -157,7 +161,7 @@ export default function Home() {
               <span className="status-dot status-live mono">
                 <i /> live
               </span>
-              {readmes[p.slug as keyof typeof readmes] ? (
+              {hasReadme(p.slug) ? (
                 <Link className="deployed-name" href={`/projects/${p.slug}`}>
                   {p.name}
                 </Link>
@@ -193,6 +197,11 @@ export default function Home() {
                 <p>{p.tagline}</p>
                 <div className="exp-meta mono">
                   <Updated iso={p.updatedAt} />
+                  {hasReadme(p.slug) && (
+                    <Link href={`/projects/${p.slug}`} className="link-ext">
+                      details
+                    </Link>
+                  )}
                   {p.repoUrl && (
                     <a href={p.repoUrl} className="link-ext" target="_blank" rel="noopener noreferrer">
                       source

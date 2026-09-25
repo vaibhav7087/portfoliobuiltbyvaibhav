@@ -3,7 +3,7 @@
     "slug": "cureslot",
     "name": "CureSlot",
     "tagline": "CureSlot is an automated, serverless WhatsApp bot built on Cloudflare Workers and D1, integrating with the Meta WhatsApp Cloud API. It is designed for medical c",
-    "description": "# CureSlot WhatsApp Bot\n\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.",
+    "description": "\nCureSlot is an automated, serverless WhatsApp bot built on **Cloudflare Workers** and **D1**, integrating with the **Meta WhatsApp Cloud API**. It is designed for medical clinics to automate patient appointment booking, schedule management, and reminder notifications.\n\n##  Key Features\n- **Patient Self-Serve Booking**: Patients can view available slots, book appointments, and cancel (subject to a configurable cancellation window).\n- **Staff Management**: Clinic staff can view daily schedules, block out dates, and manually add walk-in patients directly through WhatsApp.\n- **Automated Reminders",
     "status": "featured",
     "featuredRank": 1,
     "stack": [
@@ -22,7 +22,7 @@
     "slug": "curago",
     "name": "Curago",
     "tagline": "a voice agent to help rural areas have telemedicine services with multilingual support",
-    "description": "#  Curago — Phygital Telemedicine & Rural Healthcare Logistics\n\n> **Curago** is an end-to-end \"Phygital\" (Physical + Digital) healthcare platform built to bring primary healthcare, intelligent voice triage, real-time doctor oversight, and last-mile medicine delivery to rural and underserved communities.\n\n---\n\n##  The 4-Phase Care Delivery Flow\n\n```mermaid\nflowchart LR\n    A[ 1. Voice Intake\\nPatient Calls In] --> B[ 2. AI Triage\\nGroq / NIM Extraction]\n    B --> C[‍️ 3. Doctor Dashboard\\nReview & Approve]\n    C --> D[ 4. Last-Mile Logistics\\nField Agent Delivery]\n    D --> E[ 5. Auto Follow-up",
+    "description": "\n> **Curago** is an end-to-end \"Phygital\" (Physical + Digital) healthcare platform built to bring primary healthcare, intelligent voice triage, real-time doctor oversight, and last-mile medicine delivery to rural and underserved communities.\n\n---\n\n##  The 4-Phase Care Delivery Flow\n\n```mermaid\nflowchart LR\n    A[ 1. Voice Intake\\nPatient Calls In] --> B[ 2. AI Triage\\nGroq / NIM Extraction]\n    B --> C[‍️ 3. Doctor Dashboard\\nReview & Approve]\n    C --> D[ 4. Last-Mile Logistics\\nField Agent Delivery]\n    D --> E[ 5. Auto Follow-up\\nSMS Check-in or AI Voice Call]\n    E --> F[ 6. Physical Vital",
     "status": "featured",
     "featuredRank": 2,
     "stack": [
@@ -42,7 +42,7 @@
   {
     "slug": "eldea-web",
     "name": "Eldea Web",
-    "tagline": "Eldea Web project",
+    "tagline": "Client website for Eldea Solutions, shipped on Cloudflare Pages",
     "description": "",
     "status": "deployed",
     "featuredRank": null,
@@ -59,7 +59,7 @@
   {
     "slug": "bylance-website",
     "name": "Bylance Website",
-    "tagline": "Bylance Website project",
+    "tagline": "Marketing site for Bylance Technologies",
     "description": "",
     "status": "deployed",
     "featuredRank": null,
@@ -76,7 +76,7 @@
     "slug": "portfolio",
     "name": "Portfolio",
     "tagline": "CLI-themed static portfolio. Next.js (App Router) static export, deployed on Cloudflare Pages.",
-    "description": "# Portfolio — builtbyvaibhav.bylance.in\n\nCLI-themed static portfolio. Next.js (App Router) static export, deployed on Cloudflare Pages.\nAll project data is driven by a single config file — no hardcoded project entries.\n\n## Architecture\n```\nconfig/projects.json          <- THE source of truth (status, paths, repo URLs)\n        |\n        v\nscripts/build-projects.mjs    <- reads config + local READMEs + GitHub API\n        |\n        v\nsrc/data/projects.json        <- generated: project metadata\nsrc/data/project-readmes.json <- generated: rendered README HTML\n        |\n        v\nnext build         ",
+    "description": "\nCLI-themed static portfolio. Next.js (App Router) static export, deployed on Cloudflare Pages.\nAll project data is driven by a single config file — no hardcoded project entries.\n\n## Architecture\n```\nconfig/projects.json          <- THE source of truth (status, paths, repo URLs)\n        |\n        v\nscripts/build-projects.mjs    <- reads config + local READMEs + GitHub API\n        |\n        v\nsrc/data/projects.json        <- generated: project metadata\nsrc/data/project-readmes.json <- generated: rendered README HTML\n        |\n        v\nnext build                    <- reads generated files, out",
     "status": "deployed",
     "featuredRank": null,
     "stack": [
@@ -87,13 +87,13 @@
     ],
     "liveUrl": "https://builtbyvaibhav.bylance.in",
     "repoUrl": "https://github.com/vaibhav7087/portfoliobuiltbyvaibhav",
-    "updatedAt": "2026-09-23T19:09:15Z",
+    "updatedAt": "2026-09-24T19:23:43Z",
     "hasDetailPage": false
   },
   {
     "slug": "voice-coach",
     "name": "Voice Coach",
-    "tagline": "Voice Coach project",
+    "tagline": "Voice-coach prototype with listener and context-resolver scripts",
     "description": "",
     "status": "development",
     "featuredRank": null,
@@ -107,9 +107,26 @@
     "hasDetailPage": false
   },
   {
+    "slug": "structured-learning-skill",
+    "name": "Structured Learning Skill",
+    "tagline": "this is antigravity skill to learn new software skills ",
+    "description": "\n> An AI-powered, project-based learning engine for mastering any technology or framework by building a **resume-strong Capstone Project** through gamified **Micro-Tasks** and an interactive **9-Step Learning Cycle**.\n\n---\n\n---\n\n##  Overview\n\nThe **Structured Learning Framework** transforms passive reading into **deep, resume-building mastery**. Acting as a dedicated **AI Teacher-Agent & Game Master**, it helps you brainstorm or select a top-tier Capstone Project, maps out project milestones (Frontend, Backend, Operations), breaks topics into 15-30 minute micro-task quests for continuous dopam",
+    "status": "experiment",
+    "featuredRank": null,
+    "stack": [
+      "Next.js",
+      "Docker"
+    ],
+    "liveUrl": null,
+    "repoUrl": "https://github.com/vaibhav7087/structured_learning_skill",
+    "updatedAt": "2026-07-27T16:47:23Z",
+    "hasDetailPage": false,
+    "auto": true
+  },
+  {
     "slug": "college-gate-dashboard",
     "name": "College Gate Dashboard",
-    "tagline": "College Gate Dashboard project",
+    "tagline": "College gate-pass dashboard with QR-based entry",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -126,7 +143,7 @@
   {
     "slug": "dsa-grind-bot",
     "name": "Dsa Grind Bot",
-    "tagline": "Dsa Grind Bot project",
+    "tagline": "Discord bot turning Striver's A2Z sheet into a group study tracker",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -143,7 +160,7 @@
   {
     "slug": "autopitch",
     "name": "Autopitch",
-    "tagline": "Autopitch project",
+    "tagline": "Hackathon pitch-deck generator in Python",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -158,7 +175,7 @@
   {
     "slug": "freelanceflow",
     "name": "Freelanceflow",
-    "tagline": "Freelanceflow project",
+    "tagline": "Project and billing tracker for solo freelancers",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -175,7 +192,7 @@
   {
     "slug": "ai-research-chatbot",
     "name": "Ai Research Chatbot",
-    "tagline": "Ai Research Chatbot project",
+    "tagline": "Chat with AI research papers over LLM APIs",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -192,7 +209,7 @@
     "slug": "indicprivacy-fl",
     "name": "Indic PrivacyFL",
     "tagline": "A robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising ",
-    "description": "# IndicPrivacy-FL: Privacy-Aware Multimodal Federated Learning\n\nA robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising student data privacy.\n\n---\n\n##  Project Objectives\n\n1. **Data & Challenge Characterization:** Analyze multimodal Indic educational data (text, speech, image, video) and cross-lingual code-mixed language patterns.\n2. **Robust Multimodal Architecture:** Implement a multi-encoder network using state-of-the-art foundation models with a **Self-Attention Fusion mechanism** that d",
+    "description": "\nA robust Federated Learning framework designed for categorizing Multimodal Indic Educational Data across 7 languages and 8 subject domains without compromising student data privacy.\n\n---\n\n##  Project Objectives\n\n1. **Data & Challenge Characterization:** Analyze multimodal Indic educational data (text, speech, image, video) and cross-lingual code-mixed language patterns.\n2. **Robust Multimodal Architecture:** Implement a multi-encoder network using state-of-the-art foundation models with a **Self-Attention Fusion mechanism** that degrades gracefully when client modalities are missing.\n3. **Pri",
     "status": "experiment",
     "featuredRank": null,
     "stack": [
@@ -207,7 +224,7 @@
   {
     "slug": "indic-doc-generation",
     "name": "Indic Doc Generation",
-    "tagline": "Indic Doc Generation project",
+    "tagline": "NLP tooling for Indic document generation",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -224,7 +241,7 @@
     "slug": "ascend-bot",
     "name": "Ascend Bot",
     "tagline": "A Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain",
-    "description": "#  DSA Grind Bot — Discord Edition\n\nA Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain streaks, and flex on your friends.\n\n---\n\n##  Features\n\n###  474-Problem Sheet (Striver's A2Z)\n- Full **Striver's A2Z DSA Sheet** with all 474 problems pre-loaded\n- **Easy (152)** · **Medium (186)** · **Hard (136)** across 19 topics\n- Browse interactively by **topic**, **difficulty**, or **unsolved only**\n- Every problem name is TUF + LeetCode compatible\n\n###  XP + Tier Gamification\n| Action | XP Earn",
+    "description": "\nA Discord bot that turns Striver's A2Z DSA Sheet (474 problems) into a competitive, gamified group study tracker. Track progress, earn XP, climb tiers, maintain streaks, and flex on your friends.\n\n---\n\n##  Features\n\n###  474-Problem Sheet (Striver's A2Z)\n- Full **Striver's A2Z DSA Sheet** with all 474 problems pre-loaded\n- **Easy (152)** · **Medium (186)** · **Hard (136)** across 19 topics\n- Browse interactively by **topic**, **difficulty**, or **unsolved only**\n- Every problem name is TUF + LeetCode compatible\n\n###  XP + Tier Gamification\n| Action | XP Earned |\n|--------|-----------|\n| Solve",
     "status": "experiment",
     "featuredRank": null,
     "stack": [
@@ -240,7 +257,7 @@
     "slug": "block-rev-image",
     "name": "Block Rev Image",
     "tagline": "Given a photo containing a face, this system:",
-    "description": "# Reverse Face Image Provenance on Blockchain\n\n> Verify where a face photo appears online, then stamp the evidence immutably on Polygon Amoy.\n\n---\n\n## What It Does\n\nGiven a photo containing a face, this system:\n\n1. **Detects the face** and generates a 512-dimensional ArcFace embedding\n2. **Searches the web** using reverse image search (Google Lens via SerpApi)\n3. **Verifies candidates** by comparing image similarity (pHash) and face similarity (ArcFace cosine)\n4. **Records evidence** on Polygon Amoy testnet — a SHA-256 hash of all findings stored in a smart contract\n5. **Produces a transaction",
+    "description": "\n> Verify where a face photo appears online, then stamp the evidence immutably on Polygon Amoy.\n\n---\n\n## What It Does\n\nGiven a photo containing a face, this system:\n\n1. **Detects the face** and generates a 512-dimensional ArcFace embedding\n2. **Searches the web** using reverse image search (Google Lens via SerpApi)\n3. **Verifies candidates** by comparing image similarity (pHash) and face similarity (ArcFace cosine)\n4. **Records evidence** on Polygon Amoy testnet — a SHA-256 hash of all findings stored in a smart contract\n5. **Produces a transaction** anyone can verify on [Amoy Polygonscan](htt",
     "status": "experiment",
     "featuredRank": null,
     "stack": [
@@ -254,7 +271,7 @@
   {
     "slug": "gesture-detection",
     "name": "Gesture Detection",
-    "tagline": "Gesture Detection project",
+    "tagline": "SignAI: sign-language-to-speech mobile app in Flutter using camera hand-landmark detection and TTS",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -268,7 +285,7 @@
     "slug": "indiclangtransfer",
     "name": "Indiclangtransfer",
     "tagline": "The objective of this project is to evaluate the effectiveness of Cross-Lingual Knowledge Transfer for core Natural Language Processing (NLP) tasks in low-resou",
-    "description": "# Indic Cross-Lingual Transfer Experiments\n\n## Objective\nThe objective of this project is to evaluate the effectiveness of **Cross-Lingual Knowledge Transfer** for core Natural Language Processing (NLP) tasks in low-resource Indo-Aryan languages (such as Bhojpuri, Maithili, Rajasthani, Dogri, and Chhattisgarhi). Since these languages lack large annotated datasets, we investigate how well grammatical, semantic, and structural knowledge from linguistically related high-resource languages (Hindi, Marathi, Bengali) transfers across scripts and typologies.\n\nWe systematically evaluate different stat",
+    "description": "\n## Objective\nThe objective of this project is to evaluate the effectiveness of **Cross-Lingual Knowledge Transfer** for core Natural Language Processing (NLP) tasks in low-resource Indo-Aryan languages (such as Bhojpuri, Maithili, Rajasthani, Dogri, and Chhattisgarhi). Since these languages lack large annotated datasets, we investigate how well grammatical, semantic, and structural knowledge from linguistically related high-resource languages (Hindi, Marathi, Bengali) transfers across scripts and typologies.\n\nWe systematically evaluate different state-of-the-art multilingual transformer backb",
     "status": "experiment",
     "featuredRank": null,
     "stack": [
@@ -282,7 +299,7 @@
   {
     "slug": "sih-brainstorming",
     "name": "Sih Brainstorming",
-    "tagline": "Sih Brainstorming project",
+    "tagline": "Smart India Hackathon 2026 brainstorming: environment-monitoring alert system and MPLADS fund-fraud detection pitches with docs and prototypes",
     "description": "",
     "status": "experiment",
     "featuredRank": null,
@@ -296,7 +313,7 @@
     "slug": "tripwire",
     "name": "Tripwire",
     "tagline": "This is a Next.js template with shadcn/ui.",
-    "description": "# Next.js template\n\nThis is a Next.js template with shadcn/ui.\n\n## Adding components\n\nTo add components to your app, run the following command:\n\n```bash\nnpx shadcn@latest add button\n```\n\nThis will place the ui components in the `components` directory.\n\n## Using components\n\nTo use the components in your app, import them as follows:\n\n```tsx\nimport { Button } from \"@/components/ui/button\";\n```",
+    "description": "\nThis is a Next.js template with shadcn/ui.\n\n## Adding components\n\nTo add components to your app, run the following command:\n\n```bash\nnpx shadcn@latest add button\n```\n\nThis will place the ui components in the `components` directory.\n\n## Using components\n\nTo use the components in your app, import them as follows:\n\n```tsx\nimport { Button } from \"@/components/ui/button\";\n```",
     "status": "experiment",
     "featuredRank": null,
     "stack": [

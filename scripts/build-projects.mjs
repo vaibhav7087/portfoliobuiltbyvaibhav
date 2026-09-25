@@ -80,6 +80,81 @@ function prettifyName(slug) {
     .join(" ");
 }
 
+// Apply fn line-by-line but never inside fenced code blocks: code samples
+// must stay byte-identical (they legitimately contain localhost URLs,
+// file paths, and markdown-looking syntax).
+function mapOutsideFences(md, fn) {
+  const lines = md.split("\n");
+  let inFence = false;
+  return lines.map((line) => {
+    if (/^\s*```/.test(line) || /^\s*~~~/.test(line)) { inFence = !inFence; return line; }
+    return inFence ? line : fn(line);
+  }).join("\n");
+}
+
+// Dev-server / private-host links can never resolve publicly: keep the
+// link text, drop the dead target. Applies to every README, every repo.
+function stripLocalhostLinks(md) {
+  return mapOutsideFences(md, (line) =>
+    line
+      .replace(/\[([^\]]+)\]\(https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)[^)]*\)/g, "$1")
+      .replace(/\(?(https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)[^\s)]*)\)?/g, "local dev server")
+  );
+}
+
+// Absolute local file links (file:///C:/...) only exist on the author's
+// machine: reduce to plain text so they never become garbage URLs.
+function stripFileLinks(md) {
+  return mapOutsideFences(md, (line) =>
+    line
+      .replace(/\[([^\]]+)\]\(file:[^)]*\)/gi, "$1")
+      .replace(/(^|[\s(])file:\/\/\/\S+/gi, "$1local file")
+  );
+}
+
+// The repo title duplicates the detail page H1: drop it so every page
+// keeps exactly one h1. Runs after tagline extraction (which needs it).
+function stripFirstH1(md) {
+  return md.replace(/^#\s+.+\n/, "");
+}
+
+// Relative doc links/images 404 on the site: point them at GitHub blob/raw
+// URLs so they keep working. Needs the repo default branch.
+// Code fences are left untouched (see mapOutsideFences).
+function relinkRelative(md, repo, branch) {
+  const target = (p, raw) => {
+    if (/^(https?:|mailto:|#|data:)/i.test(p)) return null;
+    const clean = p.replace(/^\.\//, "").replace(/^\//, "");
+    if (!clean || clean.startsWith("#")) return null;
+    return raw
+      ? `https://raw.githubusercontent.com/${repo}/${branch}/${clean}`
+      : `https://github.com/${repo}/blob/${branch}/${clean}`;
+  };
+  const relinkLine = (line) => {
+    line = line.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, src) => {
+      const u = target(src.trim(), true);
+      return u ? `![${alt}](${u})` : m;
+    });
+    return line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, text, href) => {
+      const u = target(href.trim(), false);
+      return u ? `[${text}](${u})` : m;
+    });
+  };
+  return mapOutsideFences(md, relinkLine);
+}
+
+// Fallback when no repo/branch is known: relative targets become plain text
+// instead of links that 404. Code fences untouched.
+function stripRelativeTargets(md) {
+  const stripLine = (line) => {
+    line = line.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, src) =>
+      /^(https?:|data:)/i.test(src.trim()) ? m : alt);
+    return line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, text, href) =>
+      /^(https?:|mailto:|#)/i.test(href.trim()) ? m : text);
+  };
+  return mapOutsideFences(md, stripLine);
+}
+
 function titleCase(s) {
   if (s === s.toUpperCase() && s.length > 1) return s.charAt(0) + s.slice(1).toLowerCase();
   return s;
@@ -279,7 +354,17 @@ async function main() {
     }
 
     // 3. Derive display fields, preferring freshly fetched content.
-    const cleaned = readmeRaw ? cleanMarkdown(readmeRaw) : "";
+    // Order matters: tagline needs the title; everything else drops it.
+    let cleaned = readmeRaw ? cleanMarkdown(readmeRaw) : "";
+    if (!tagline) tagline = extractTagline(cleaned);
+    cleaned = stripLocalhostLinks(cleaned);
+    cleaned = stripFileLinks(cleaned);
+    cleaned = stripFirstH1(cleaned);
+    if (entry.repo && ghData?.default_branch) {
+      cleaned = relinkRelative(cleaned, entry.repo, ghData.default_branch);
+    } else if (cleaned) {
+      cleaned = stripRelativeTargets(cleaned);
+    }
     if (!tagline) tagline = extractTagline(cleaned);
     if (!tagline) tagline = prev.tagline || `${name} project`;
     if (!description) description = cleaned ? cleaned.slice(0, 600) : (prev.description || "");

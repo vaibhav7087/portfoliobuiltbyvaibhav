@@ -9,7 +9,11 @@ type ReadmeEntry = { html: string; description?: string } | null;
 const readmeMap = readmesJson as Record<string, ReadmeEntry>;
 
 export function generateStaticParams() {
-  return projects.filter((p) => p.status === "featured").map((p) => ({ slug: p.slug }));
+  // Every project with README content gets a detail page — featured
+  // deep-dives and experiment readmes alike, public and private repos.
+  // Private READMEs ship inside the committed static snapshot, so no token
+  // is needed at runtime.
+  return projects.filter((p) => readmeMap[p.slug]?.html).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata(props: PageProps<"/projects/[slug]">): Promise<Metadata> {
