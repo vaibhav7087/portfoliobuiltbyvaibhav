@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+venv/
+.venv/
+node_modules/
+build/
+dist/
+__pycache__/
+.cache/
+*.key
+id_rsa
+id_ed25519
+.opencode/
+.huggingface/
+# hardened 2026-11-07 (vaibhav7087 backup)
+.env.production
+.env.local
